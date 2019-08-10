@@ -10,8 +10,8 @@ while ! dd if=/dev/sr0 bs=2048 count=1 of=/dev/null 2>/dev/null; do sleep 1; don
 DVD_NAME="$(blkid -o value -s LABEL /dev/sr0)"
 echo "Dvd Name = $DVD_NAME"
 
-#Rip the DVD
-dvdbackup -i /dev/sr0 -o ../storage/Movies/tmp/ -n $DVD_NAME -t 1
+#Rip the DVD only the main feature
+dvdbackup -i /dev/sr0 -o ../storage/Movies/tmp/ -n $DVD_NAME -F #-t 1
 
 #combine the .VOB files into one file
 cat ../storage/Movies/tmp/$DVD_NAME/VIDEO_TS/*.VOB > ../storage/Movies/tmp/$DVD_NAME/$DVD_NAME.VOB
