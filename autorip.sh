@@ -8,6 +8,7 @@ while ! dd if=/dev/sr0 bs=2048 count=1 of=/dev/null 2>/dev/null; do sleep 1; don
 
 #get the name of the dvd
 DVD_NAME="$(blkid -o value -s LABEL /dev/sr0)"
+DVD_NAME=${DVD_NAME// /}
 echo "Dvd Name = $DVD_NAME"
 
 #Rip the DVD only the main feature
